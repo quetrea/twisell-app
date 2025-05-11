@@ -107,9 +107,12 @@ export const Navbar = () => {
       </div>
 
       <div className="flex lg:hidden items-center justify-center">
-        <Button variant={"ghost"} className="size-12 border-transparent bg-white"
-        onClick={()=> setIsMobileSidebarOpen(true)}>
-          <MenuIcon />
+        <Button
+          variant={"ghost"}
+          className="size-12 border-transparent bg-white"
+          onClick={() => setIsMobileSidebarOpen(true)}
+        >
+          <MenuIcon className="size-12" />
         </Button>
       </div>
     </nav>
