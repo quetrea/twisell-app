@@ -112,7 +112,7 @@ export const Navbar = () => {
           className="size-12 border-transparent bg-white"
           onClick={() => setIsMobileSidebarOpen(true)}
         >
-          <MenuIcon className="size-12" />
+          <MenuIcon />
         </Button>
       </div>
     </nav>
