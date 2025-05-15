@@ -5,6 +5,7 @@ import { Footer } from "./footer";
 import { Navbar } from "./navbar";
 import { SearchFilters } from "./search-filters";
 import { Category } from "@/payload-types";
+import { CustomCategory } from "./types";
 
 interface HomeLayoutProps {
   children: React.ReactNode;
@@ -26,11 +27,12 @@ const HomeLayout = async ({ children }: HomeLayoutProps) => {
         exists: false, // Sadece üst kategorileri getir (parent değeri olmayanlar)
       },
     },
+    sort: "name", // Kategorileri isme göre sıralıyoruz
   });
 
   // Gelen veriyi formatlıyoruz:
   // Her kategoriye ait alt kategorileri de düzenliyoruz
-  const formattedData = data.docs.map((doc) => ({
+  const formattedData: CustomCategory[] = data.docs.map((doc) => ({
     ...doc,
     subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
       // subcategories alanı depth: 1 olduğu için, gelen alt kategorileri doğru tipe çeviriyoruz (Category).
