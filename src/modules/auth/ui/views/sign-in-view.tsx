@@ -79,14 +79,12 @@ export const SignInView = () => {
                 size={"sm"}
                 className="text-base border-none hover:underline"
               >
-                <Link prefetch href={"/sign-in"}>
+                <Link prefetch href={"/sign-up"}>
                   Sign Up
                 </Link>
               </Button>
             </div>
-            <h1 className="text-4xl font-medium">
-              Welcome back to Twisell
-            </h1>
+            <h1 className="text-4xl font-medium">Welcome back to Twisell</h1>
 
             <FormField
               name={"email"}
