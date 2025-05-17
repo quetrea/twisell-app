@@ -33,7 +33,7 @@ export const NavbarSidebar = ({ open, onOpenChange, items }: Props) => {
         <ScrollArea className="flex flex-col overflow-y-auto h-full pb-2 ">
           {items.map((item) => (
             <Link
-               onClick={() => onOpenChange(false)}
+              onClick={() => onOpenChange(false)}
               key={item.href}
               href={item.href}
               className={cn(
@@ -47,6 +47,7 @@ export const NavbarSidebar = ({ open, onOpenChange, items }: Props) => {
           <div className="border-t">
             <Link
               onClick={() => onOpenChange(false)}
+              prefetch
               href={"/sign-in"}
               className="w-full text-left p-4 text-black bg-white h-12 hover:text-white hover:bg-black flex items-center font-medium text-base"
             >
@@ -54,6 +55,7 @@ export const NavbarSidebar = ({ open, onOpenChange, items }: Props) => {
             </Link>
             <Link
               onClick={() => onOpenChange(false)}
+              prefetch
               href={"/sign-up"}
               className="w-full text-left p-4 text-black bg-white h-12 hover:text-white hover:bg-black flex items-center font-medium text-base"
             >
