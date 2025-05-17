@@ -3,13 +3,13 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { Poppins } from "next/font/google";
 
 import { NavbarSidebar } from "./navbar-sidebar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MenuIcon } from "lucide-react";
 
+import { Poppins } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["700"],
@@ -94,14 +94,18 @@ export const Navbar = () => {
           variant={"secondary"}
           className="border-l border-t-0 border-r-0 border-b-0 px-12 rounded-none bg-white h-full hover:bg-pink-400 transition-colors text-lg"
         >
-          <Link href={"/sign-in"}>Log in</Link>
+          <Link prefetch href={"/sign-in"}>
+            Log in
+          </Link>
         </Button>
         <Button
           asChild
           variant={"secondary"}
           className="border-l border-t-0 border-r-0 border-b-0 px-12 rounded-none hover:bg-pink-400 h-full bg-black transition-colors text-white hover:text-black text-lg"
         >
-          <Link href={"/sign-up"}>Start selling</Link>
+          <Link prefetch href={"/sign-up"}>
+            Start selling
+          </Link>
         </Button>
       </div>
 
