@@ -74,7 +74,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
         <SheetHeader className="p-4 border-b">
           <SheetTitle className="text-3xl font-bold">Categories</SheetTitle>
         </SheetHeader>
-        <ScrollArea className="flex flex-col h-full overlfow-y-auto pb-2">
+        <ScrollArea className="flex flex-col h-full overflow-y-auto pb-2">
           {parentCategories && (
             <button
               onClick={handleBackClick}
