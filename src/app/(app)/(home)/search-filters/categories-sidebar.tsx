@@ -24,7 +24,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
 
   const router = useRouter();
 
-  // If we have parent categories, show those , otherwise show root categories
+  // If we have parent categories, show those , otherwise show r oot categories
   const [parentCategories, setParentCategories] =
     useState<CategoriesGetManyOutput | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<
