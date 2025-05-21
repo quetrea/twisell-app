@@ -16,7 +16,7 @@ export const Product: CollectionConfig = {
     {
       name: "price",
       admin: {
-        description: "Price in USD"
+        description: "Price in USD",
       },
       type: "number",
       required: true,
@@ -27,6 +27,13 @@ export const Product: CollectionConfig = {
       relationTo: "categories",
       hasMany: false,
     },
+    {
+      name: "tags",
+      type: "relationship",
+      relationTo: "tags",
+      hasMany: true,
+    },
+
     {
       name: "image",
       type: "upload",
