@@ -15,6 +15,9 @@ export const authRouter = createTRPCRouter({
   register: baseProcedure
     .input(registerSchema)
     .mutation(async ({ ctx, input }) => {
+
+
+      
       const existingData = await ctx.db.find({
         collection: "users",
         limit: 1,
@@ -34,6 +37,23 @@ export const authRouter = createTRPCRouter({
         });
       }
 
+      const existingTenant = await ctx.db.find({
+        collection: "tenants",
+        limit: 1,
+        where: {
+          slug: {
+            equals: input.username,
+          },
+        },
+      });
+
+      if (!existingTenant.docs[0]) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Tenant with this name already exists",
+        });
+      }
+
       const tenant = await ctx.db.create({
         collection: "tenants",
         data: {
@@ -42,6 +62,8 @@ export const authRouter = createTRPCRouter({
           stripeAccountId: "test",
         },
       });
+
+      
 
       await ctx.db.create({
         collection: "users",
