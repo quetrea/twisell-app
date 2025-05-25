@@ -8,13 +8,10 @@ import { cn } from "@/lib/utils";
 interface Props {
   category: CategoriesGetManyOutput[1];
   isOpen: boolean;
-  position: {
-    top: number;
-    left: number;
-  };
+
 }
 
-export const SubcategoryMenu = ({ category, isOpen, position }: Props) => {
+export const SubcategoryMenu = ({ category, isOpen }: Props) => {
   const params = useParams();
   if (
     !isOpen ||
@@ -30,10 +27,7 @@ export const SubcategoryMenu = ({ category, isOpen, position }: Props) => {
   const isActiveSubCategory = subCategoryParam;
 
   return (
-    <div
-      className="fixed z-100"
-      style={{ top: position.top, left: position.left }}
-    >
+    <div className="absolute z-100" style={{ top: "100%", left: 0 }}>
       {/* Invisible bridge to maintain hover */}
       <div className="h-3 w-60" />
       <div

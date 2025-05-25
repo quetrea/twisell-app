@@ -1,17 +1,20 @@
 // storage-adapter-import-placeholder
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { multiTenantPlugin } from "@payloadcms/plugin-multi-tenant";
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Categories } from './collections/Categories'
-import { Product } from "./collections/Products";
+import path from "path";
+import { buildConfig } from "payload";
+import { fileURLToPath } from "url";
+import sharp from "sharp";
+
 import { Tags } from "./collections/Tags";
+import { Users } from "./collections/Users";
+import { Media } from "./collections/Media";
+import { Tenants } from "./collections/Tenants";
+import { Product } from "./collections/Products";
+import { Categories } from "./collections/Categories";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -23,7 +26,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Categories, Product, Tags],
+  collections: [Users, Media, Categories, Product, Tags, Tenants],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -35,6 +38,16 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
+    multiTenantPlugin({
+      collections: {
+        products: {},
+      },
+      tenantsArrayField: {
+        includeDefaultField: false,
+      },
+      userHasAccessToAllTenants: (user) =>
+        Boolean(user?.roles?.includes("super-admin")),
+    }),
     // storage-adapter-placeholder
   ],
 });
