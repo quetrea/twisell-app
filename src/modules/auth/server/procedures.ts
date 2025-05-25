@@ -47,7 +47,7 @@ export const authRouter = createTRPCRouter({
         },
       });
 
-      if (!existingTenant.docs[0]) {
+      if (existingTenant.docs[0]) {
         throw new TRPCError({
           code: "BAD_REQUEST",
           message: "Tenant with this name already exists",
