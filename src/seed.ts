@@ -142,6 +142,16 @@ const seed = async () => {
     config,
   });
 
+  await payload.create({
+    collection: "users",
+    data: {
+      email: "quetreatwitch@gmail.com",
+      password: "VK%CC$/5,2@;~i[(",
+      roles: ["super-admin"],
+      username: "admin",
+    },
+  });
+
   for (const category of categories) {
     const parentCategory = await payload.create({
       collection: "categories",
