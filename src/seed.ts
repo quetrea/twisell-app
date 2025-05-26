@@ -142,13 +142,27 @@ const seed = async () => {
     config,
   });
 
+  const adminTenant = await payload.create({
+    collection: "tenants",
+    data: {
+      name: "admin",
+      slug: "admin",
+      stripeAccountId: "admin",
+    },
+  });
+
   await payload.create({
     collection: "users",
     data: {
-      email: "quetreatwitch@gmail.com",
-      password: "VK%CC$/5,2@;~i[(",
+      email: "quetrea@demo.com",
+      password: "demo",
       roles: ["super-admin"],
       username: "admin",
+      tenants: [
+        {
+          tenant: adminTenant.id,
+        },
+      ],
     },
   });
 
