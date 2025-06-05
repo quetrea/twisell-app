@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🛒 Twisell App
+🔗 [View on GitHub](https://github.com/quetrea/twisell-app)
 
-## Getting Started
+A powerful, fully customizable multi-tenant e-commerce platform. Each store (tenant) operates independently with its own database, admin panel, and branding. Built for scalability and flexibility.
 
-First, run the development server:
+---
+
+### 🚀 Tech Stack Overview
+
+#### 🔧 Backend
+- **Payload CMS** – Headless CMS and REST/GraphQL API
+- **Payload Multi-Tenant Plugin** – Isolated environments for each tenant
+- **tRPC** – End-to-end type-safe API communication
+- **Stripe** – Payment gateway integration
+- **SuperJSON** – Data serialization for advanced use cases
+- **MongoDB** – Database powered by `@payloadcms/db-mongodb`
+
+#### 🎨 Frontend
+- **Next.js 15** – Full-stack React framework
+- **React 19** – Frontend library
+- **Tailwind CSS v4** + `tw-animate-css` – Utility-first styling with animations
+- **Radix UI** – Accessible and customizable UI primitives
+- **Lucide Icons** – Clean and modern icon library
+- **Vaul** – Drawer component system
+- **Embla Carousel** – Interactive product sliders
+- **Sonner** – Toast notifications
+
+#### ⚙️ State & Form Management
+- **Zustand** – Lightweight global state management
+- **TanStack React Query** – Data fetching and caching
+- **React Hook Form + Zod** – Form control and schema validation
+
+#### 🧩 Additional Tools
+- **Dark mode support** via `next-themes`
+- **Data visualization** with `Recharts`, `react-resizable-panels`, `date-fns`
+- **Advanced UI** features via `cmdk`, `input-otp`, `react-day-picker`, and `nuqs`
+
+---
+
+### 📂 Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Start development server
+bun run dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Reset database & apply fresh migrations
+bun run db:fresh
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Seed database
+bun run db:seed
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Generate Payload CMS types
+bun run generate:types
