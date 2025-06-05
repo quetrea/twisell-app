@@ -17,6 +17,7 @@ import { Tenants } from "./collections/Tenants";
 import { Product } from "./collections/Products";
 import { Categories } from "./collections/Categories";
 import { Orders } from "./collections/Orders";
+import { Reviews } from "./collections/Reviews";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -28,7 +29,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Categories, Product, Tags, Tenants, Orders],
+  collections: [
+    Users,
+    Media,
+    Categories,
+    Product,
+    Tags,
+    Tenants,
+    Orders,
+    Reviews,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
