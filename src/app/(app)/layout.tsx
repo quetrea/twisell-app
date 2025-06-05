@@ -24,8 +24,8 @@ export default function RootLayout({
       <body className={`${DmSans.className} antialiased`}>
         <NuqsAdapter>
           <TRPCReactProvider>
-            {children}
             <Toaster />
+            {children}
           </TRPCReactProvider>
         </NuqsAdapter>
       </body>
