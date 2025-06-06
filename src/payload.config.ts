@@ -10,6 +10,8 @@ import { Config } from "./payload-types";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
 
+import { isSuperAdmin } from "./lib/access";
+
 import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
@@ -57,8 +59,7 @@ export default buildConfig({
       tenantsArrayField: {
         includeDefaultField: false,
       },
-      userHasAccessToAllTenants: (user) =>
-        Boolean(user?.roles?.includes("super-admin")),
+      userHasAccessToAllTenants: (user) => isSuperAdmin(user),
     }),
     // storage-adapter-placeholder
   ],
