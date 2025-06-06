@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTRPC } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { StarPicker } from "@/components/ui/star-picker";
+import { StarPicker } from "@/components/star-picker";
 
 import { ReviewsGetOneOutput } from "@/modules/reviews/types";
 import {
