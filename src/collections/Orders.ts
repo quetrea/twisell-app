@@ -1,7 +1,15 @@
 import type { CollectionConfig } from "payload";
 
+import { isSuperAdmin } from "@/lib/access";
+
 export const Orders: CollectionConfig = {
   slug: "orders",
+  access: {
+    read: ({ req }) => isSuperAdmin(req.user),
+    create: ({ req }) => isSuperAdmin(req.user),
+    update: ({ req }) => isSuperAdmin(req.user),
+    delete: ({ req }) => isSuperAdmin(req.user),
+  },
   admin: {
     useAsTitle: "name",
   },
@@ -25,6 +33,13 @@ export const Orders: CollectionConfig = {
       required: true,
       hasMany: false,
     },
-    { name: "stripeCheckoutSessionId", type: "text", required: true },
+    {
+      name: "stripeCheckoutSessionId",
+      type: "text",
+      required: true,
+      admin: {
+        description: "Stripe checkout session associated with the order",
+      },
+    },
   ],
 };
