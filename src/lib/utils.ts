@@ -5,11 +5,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function generateTenantUrl(slug: string) {
+export function generateTenantUrl(
+  slug: string,
+  select: "isLibrary" | "default" = "default"
+) {
   const isDevelopment = process.env.NODE_ENV === "development";
   const isSubdomainRoutingEnabled =
     process.env.NEXT_PUBLIC_ENABLE_SUBDOMAIN_ROUTING === "true";
- 
+
+  if (select === "isLibrary") {
+    return `${process.env.NEXT_PUBLIC_APP_URL}`;
+  }
 
   // In development or subdomain routing disabled mode, use normal routing
   if (isDevelopment || !isSubdomainRoutingEnabled) {

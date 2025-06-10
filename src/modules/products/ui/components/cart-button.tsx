@@ -22,7 +22,7 @@ export const CartButton = ({ tenantSlug, productId, isPurchased }: Props) => {
       >
         <Link
           prefetch
-          href={`${generateTenantUrl(tenantSlug)}/library/${productId}`}
+          href={`${generateTenantUrl(tenantSlug, "isLibrary")}/library/${productId}`}
         >
           View in library
         </Link>
