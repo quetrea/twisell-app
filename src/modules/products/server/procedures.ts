@@ -24,13 +24,20 @@ export const productsRouter = createTRPCRouter({
         collection: "products",
         id: input.id,
         depth: 2, // Load the "product.image", "product.tenant", and "product.tenant.image"
-         select: {
+        select: {
           content: false,
         },
       });
 
       if (!product) {
         throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Product is not found",
+        });
+      }
+
+      if (product.isArchived) {
+         throw new TRPCError({
           code: "NOT_FOUND",
           message: "Product is not found",
         });
@@ -129,8 +136,9 @@ export const productsRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const where: Where = {
-        price: {},
+        isArchived: { not_equals: true },
       };
+
       let sort: Sort = "-createdAt";
 
       if (input.sort === "curated") {
@@ -165,6 +173,14 @@ export const productsRouter = createTRPCRouter({
       if (input.tenantSlug) {
         where["tenant.slug"] = {
           equals: input.tenantSlug,
+        };
+      } else {
+        // If we are loading productsfor public storefront (no tenant slug)
+        // Make sure to not load products set to "isPrivate: true" (using reverse not_equals logic)
+        // These products are exclusively private to the tenant store
+
+        where["isPrivate"] = {
+          not_equals: true,
         };
       }
 

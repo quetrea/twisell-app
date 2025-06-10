@@ -1,3 +1,5 @@
+"use client";
+
 import { z } from "zod";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -152,5 +154,31 @@ export const ReviewForm = ({ productId, initialData }: ReviewFormProps) => {
         </Button>
       )}
     </Form>
+  );
+};
+
+export const ReviewFormSkeleton = () => {
+  return (
+    <div className="flex flex-col gap-y-4">
+      <p className="font-medium">Liked it? Give it a rating 🎉</p>
+
+      <StarPicker disabled />
+
+      <Textarea
+        placeholder="Want to leave a written review?"
+        autoComplete="false"
+        disabled
+      />
+
+      <Button
+        variant="elevated"
+        disabled
+        type="button"
+        size={"lg"}
+        className="bg-black text-white hover:bg-pink-400 hover:text-primary w-fit"
+      >
+        Post review
+      </Button>
+    </div>
   );
 };
