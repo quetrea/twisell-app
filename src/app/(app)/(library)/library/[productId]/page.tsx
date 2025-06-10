@@ -7,6 +7,9 @@ import {
 } from "@/modules/library/ui/views/product-view";
 import { Suspense } from "react";
 
+
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{
     productId: string;
