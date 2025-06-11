@@ -12,9 +12,38 @@ const DmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Create Twisell App",
-  description: "Created by Furkan Mert Kübel",
+  title: "Twisell – Effortless Digital Product Selling",
+  description:
+    "Twisell is a modern platform built by Furkan Mert Kübel that lets you create, manage, and sell digital products with ease. Perfect for creators, freelancers, and entrepreneurs.",
+  keywords: [
+    "Twisell",
+    "digital products",
+    "sell online",
+    "creator tools",
+    "next.js SaaS",
+    "Payload CMS",
+    "multitenant app",
+    "ecommerce for digital goods",
+    "furkan mert kübel",
+  ],
+  authors: [
+    {
+      name: "Furkan Mert Kübel",
+      url: "https://github.com/quetrea",
+    },
+  ],
+  metadataBase: new URL("https://twisell.store"),
+  openGraph: {
+    title: "Twisell – Effortless Digital Product Selling",
+    description:
+      "Twisell helps you build your own digital storefront. Start selling in minutes — no complex setup needed.",
+    url: "https://twisell.store",
+    siteName: "Twisell",
+    locale: "en_US",
+    type: "website",
+  },
 };
+
 
 export default function RootLayout({
   children,
