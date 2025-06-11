@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { DM_Sans } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { TRPCReactProvider } from "@/trpc/client";
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={`${DmSans.className} antialiased`}>
         <NuqsAdapter>
           <TRPCReactProvider>
+            <Analytics />
             <Toaster />
             {children}
           </TRPCReactProvider>
