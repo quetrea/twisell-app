@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/sheet";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";
+import { cn, generatePublicUrl } from "@/lib/utils";
 import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 
@@ -54,7 +54,7 @@ export const NavbarSidebar = ({ open, onOpenChange, items }: Props) => {
                 <Link
                   onClick={() => onOpenChange(false)}
                   prefetch
-                  href={"/admin"}
+                  href={`${generatePublicUrl()}/admin`}
                   className="w-full text-left p-4 text-black bg-white h-12 hover:text-white hover:bg-black flex items-center font-medium text-base"
                 >
                   Dashboard
@@ -65,7 +65,7 @@ export const NavbarSidebar = ({ open, onOpenChange, items }: Props) => {
                 <Link
                   onClick={() => onOpenChange(false)}
                   prefetch
-                  href={"/sign-in"}
+                  href={`${generatePublicUrl()}/sign-in`}
                   className="w-full text-left p-4 text-black bg-white h-12 hover:text-white hover:bg-black flex items-center font-medium text-base"
                 >
                   Log in
@@ -73,7 +73,7 @@ export const NavbarSidebar = ({ open, onOpenChange, items }: Props) => {
                 <Link
                   onClick={() => onOpenChange(false)}
                   prefetch
-                  href={"/sign-up"}
+                  href={`${generatePublicUrl()}/sign-up`}
                   className="w-full text-left p-4 text-black bg-white h-12 hover:text-black hover:bg-pink-400 flex items-center font-medium text-base"
                 >
                   Start selling

@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { useTRPC } from "@/trpc/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCart } from "../../hooks/use-cart";
-import { generateTenantUrl } from "@/lib/utils";
+import { generatePublicUrl, generateTenantUrl } from "@/lib/utils";
 import { CheckoutItem } from "../components/checkout-item";
 import { CheckoutSidebar } from "../components/checkout-sidebar";
 import { InboxIcon, Loader2Icon } from "lucide-react";
@@ -39,8 +39,7 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
       },
       onError: (error) => {
         if (error?.data?.code === "UNAUTHORIZED") {
-          // TODO: Modify when subdomains enabled
-          router.push("/sign-in");
+          router.push(`${generatePublicUrl()}/sign-in`);
         }
         toast.error(error.message);
       },

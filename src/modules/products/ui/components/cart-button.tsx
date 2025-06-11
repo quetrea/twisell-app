@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { cn, generateTenantUrl } from "@/lib/utils";
+import { cn, generatePublicUrl } from "@/lib/utils";
 
 import { useCart } from "@/modules/checkout/hooks/use-cart";
 
@@ -20,10 +20,7 @@ export const CartButton = ({ tenantSlug, productId, isPurchased }: Props) => {
         asChild
         className="flex-1 font-medium bg-white"
       >
-        <Link
-          prefetch
-          href={`${generateTenantUrl(tenantSlug, "isLibrary")}/library/${productId}`}
-        >
+        <Link prefetch href={`${generatePublicUrl()}/library/${productId}`}>
           View in library
         </Link>
       </Button>

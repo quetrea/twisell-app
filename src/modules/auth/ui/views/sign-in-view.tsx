@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { cn } from "@/lib/utils";
+import { cn, generatePublicUrl } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -83,7 +83,7 @@ export const SignInView = () => {
                 size={"sm"}
                 className="text-base border-none hover:underline"
               >
-                <Link prefetch href={"/sign-up"}>
+                <Link prefetch href={`${generatePublicUrl()}/sign-up`}>
                   Sign Up
                 </Link>
               </Button>

@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { NavbarSidebar } from "./navbar-sidebar";
 import { Button } from "@/components/ui/button";
 import { useTRPC } from "@/trpc/client";
-import { cn } from "@/lib/utils";
+import { cn, generatePublicUrl } from "@/lib/utils";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -98,7 +98,7 @@ export const Navbar = () => {
             variant={"secondary"}
             className="border-l border-t-0 border-r-0 border-b-0 px-12 rounded-none hover:bg-pink-400 h-full bg-black transition-colors text-white hover:text-black text-lg"
           >
-            <Link prefetch href={"/admin"}>
+            <Link prefetch href={`${generatePublicUrl()}/admin`}>
               Dashboard
             </Link>
           </Button>
@@ -110,7 +110,7 @@ export const Navbar = () => {
             variant={"secondary"}
             className="border-l border-t-0 border-r-0 border-b-0 px-12 rounded-none bg-white h-full hover:bg-pink-400 transition-colors text-lg"
           >
-            <Link prefetch href={"/sign-in"}>
+            <Link prefetch href={`${generatePublicUrl()}/sign-in`}>
               Log in
             </Link>
           </Button>
@@ -119,7 +119,7 @@ export const Navbar = () => {
             variant={"secondary"}
             className="border-l border-t-0 border-r-0 border-b-0 px-12 rounded-none hover:bg-pink-400 h-full bg-black transition-colors text-white hover:text-black text-lg"
           >
-            <Link prefetch href={"/sign-up"}>
+            <Link prefetch href={`${generatePublicUrl()}/sign-up`}>
               Start selling
             </Link>
           </Button>
