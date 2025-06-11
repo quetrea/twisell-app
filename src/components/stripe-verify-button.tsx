@@ -10,7 +10,7 @@ export const StripeVerifyButton = () => {
   const { data } = useQuery(trpc.tenants.getCurrentTenant.queryOptions());
   return (
     <>
-      {data?.stripeDetailsSubmitted && (
+      {!data?.stripeDetailsSubmitted && (
         <Link href="/stripe-verify" className="verifyStripe">
           <Button>Verify account</Button>
         </Link>
