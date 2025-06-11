@@ -75,6 +75,6 @@ bun run db:seed
 
 🙏 Special Thanks
 This project was inspired by the brilliant work of
-  ,
+CodeWithAntonio,
 and supported by the incredible open-source community. 💙
 
