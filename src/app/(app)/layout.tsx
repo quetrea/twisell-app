@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DM_Sans } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { TRPCReactProvider } from "@/trpc/client";
@@ -26,6 +27,7 @@ export default function RootLayout({
         <NuqsAdapter>
           <TRPCReactProvider>
             <Analytics />
+            <SpeedInsights />
             <Toaster />
             {children}
           </TRPCReactProvider>
