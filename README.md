@@ -1,53 +1,80 @@
-## 🛒 Twisell App
-🔗 [View on GitHub](https://github.com/quetrea/twisell-app)
+# 🛍️ Twisell App
 
-A powerful, fully customizable multi-tenant e-commerce platform. Each store (tenant) operates independently with its own database, admin panel, and branding. Built for scalability and flexibility.
+**Twisell** is a multi-tenant e-commerce SaaS platform built with **Next.js**, **Payload CMS**, **tRPC**, and **Stripe Connect**. It enables anyone to launch and manage their own digital storefronts – with complete control over products, branding, and payments.
 
----
-
-### 🚀 Tech Stack Overview
-
-#### 🔧 Backend
-- **Payload CMS** – Headless CMS and REST/GraphQL API
-- **Payload Multi-Tenant Plugin** – Isolated environments for each tenant
-- **tRPC** – End-to-end type-safe API communication
-- **Stripe** – Payment gateway integration
-- **SuperJSON** – Data serialization for advanced use cases
-- **MongoDB** – Database powered by `@payloadcms/db-mongodb`
-
-#### 🎨 Frontend
-- **Next.js 15** – Full-stack React framework
-- **React 19** – Frontend library
-- **Tailwind CSS v4** + `tw-animate-css` – Utility-first styling with animations
-- **Radix UI** – Accessible and customizable UI primitives
-- **Lucide Icons** – Clean and modern icon library
-- **Vaul** – Drawer component system
-- **Embla Carousel** – Interactive product sliders
-- **Sonner** – Toast notifications
-
-#### ⚙️ State & Form Management
-- **Zustand** – Lightweight global state management
-- **TanStack React Query** – Data fetching and caching
-- **React Hook Form + Zod** – Form control and schema validation
-
-#### 🧩 Additional Tools
-- **Dark mode support** via `next-themes`
-- **Data visualization** with `Recharts`, `react-resizable-panels`, `date-fns`
-- **Advanced UI** features via `cmdk`, `input-otp`, `react-day-picker`, and `nuqs`
+🌐 **Live Demo:** [https://twisell.store](https://twisell.store)
 
 ---
 
-### 📂 Scripts
+## 🚀 Features
+
+### 🎨 Frontend (Next.js + TailwindCSS)
+- Tenant-specific storefronts via subdomains
+- Dynamic homepage with product search & category filters
+- Product pages with reviews, protected content, and purchase status
+- Multi-tenant shopping cart & checkout system
+- Library for purchased products
+- Responsive mobile-first UI
+- Authentication (Sign in, Sign up, Sessions)
+
+### 🧠 Backend (Payload CMS + tRPC)
+- Role-based access: `super-admin` & `user`
+- Admin dashboard to manage tenants, products, categories, and orders
+- Category & tag hierarchy support
+- Protected product fields (shown only after purchase)
+- Stripe Connect with platform fees
+- API routes (REST, GraphQL Playground, tRPC)
+
+### 📦 Infrastructure
+- Subdomain-based tenant routing (via middleware)
+- Dynamic SSR rendering for real-time content
+- Media storage via Vercel Blob
+- Admin seeding via environment variables
+- Rich text + media support for product descriptions
+
+---
+
+## 🧪 Tech Stack
+
+| Layer        | Tech Stack                                                  |
+|--------------|-------------------------------------------------------------|
+| Frontend     | Next.js, TypeScript, TailwindCSS, React Query, tRPC        |
+| Backend      | Payload CMS, Node.js, Express, Stripe Connect              |
+| Database     | MongoDB (via Payload)                                       |
+| Auth         | Payload Auth with cookie-based session management          |
+| Media        | Vercel Blob Storage                                         |
+| Deployment   | Vercel (fully supported) or Docker-ready setup              |
+
+---
+
+## 🛠 Local Development
 
 ```bash
-# Start development server
+# 1. Clone the repository
+git clone https://github.com/quetrea/twisell-app.git
+cd twisell-app
+
+# 2. Install dependencies
+bun install
+
+# 3. Create environment file
+cp .env.example .env
+
+# 4. Fill in required credentials in the .env file
+# - Stripe API keys
+# - MongoDB URI
+# - Admin user credentials
+# - Application domain (e.g., twisell.store)
+
+# 5. Run development server
 bun run dev
 
-# Reset database & apply fresh migrations
-bun run db:fresh
-
-# Seed database
+# 6. (Optional) Seed the database
 bun run db:seed
 
-# Generate Payload CMS types
-bun run generate:types
+
+🙏 Special Thanks
+This project was inspired by the brilliant work of
+  ,
+and supported by the incredible open-source community. 💙
+

@@ -1,11 +1,16 @@
-import { Button, Link } from "@payloadcms/ui";
+"server-only";
 
-export const StripeVerify = () => {
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { StripeVerifyButton } from "./stripe-verify-button";
+import { getQueryClient, trpc } from "@/trpc/server";
+
+export const StripeVerify = async () => {
+  const queryClient = getQueryClient();
+  void queryClient.prefetchQuery(trpc.tenants.getCurrentTenant.queryOptions());
+
   return (
-    <Link href="/stripe-verify">
-      <Button>
-        Verify account
-      </Button>
-    </Link>
-  )
-}
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <StripeVerifyButton />
+    </HydrationBoundary>
+  );
+};
